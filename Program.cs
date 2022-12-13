@@ -1,23 +1,13 @@
 ﻿using System;
+using System.Reflection.Metadata.Ecma335;
 
 class MainClass
 {
 
-    static string? ShowColor(string UserName)
+    static string? ShowColor(string UserName, int UserAge)
     {
 
         (string UserName, int age) anketa;
-
-        /*Console.Write("Введите имя: ");
-        anketa.UserName = Console.ReadLine();
-        Console.Write("Введите возраст с цифрами: ");
-        anketa.age = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("Ваше имя: {0}", anketa.UserName);
-        Console.WriteLine("Ваш возраст: {0}", anketa.age);
-
-        Console.ReadKey();*/
-
 
         Console.WriteLine($"Привет {UserName} напишите свой любимый цвет на английском с маленькой буквы");
         var color = Console.ReadLine();
@@ -54,60 +44,31 @@ class MainClass
 
     public static void Main(string[] args)
     {
-        var (name, age) = ("Евгения", 27);
+        
 
-        Console.WriteLine("Мое имя: {0}", name);
-        Console.WriteLine("Мой возраст: {0}", age);
+        var SomeName = "Ilia";
+        Console.WriteLine(SomeName);
 
-        Console.Write("Введите имя: ");
-        name = Console.ReadLine();
-        Console.Write("Введите возрас с цифрами:");
-        age = Convert.ToInt32(Console.ReadLine());
+        GetName(ref SomeName);
 
-        Console.WriteLine("Ваше имя: {0}", name);
-        Console.WriteLine("Ваш возраст: {0}", age);
+        Console.WriteLine(SomeName);
 
-        var favcolor = new string?[3];
-        for (int i = 0; i < favcolor.Length; i++)
-        {
-            favcolor[i] = ShowColor(name);
-        }
-        GetArrayFromConsole();
-     
+        var arr = new int[] { 1, 2, 3 };
+        BigDataOperation(arr);
+
+        Console.WriteLine(arr[0]);
 
     }
-    static int[] GetArrayFromConsole()
+
+    static void GetName(ref string name)
     {
-        var result = new int[5];
-
-        for (int i = 0; i < result.Length; i++)
-        {
-            Console.WriteLine("Введите элемент массива номер {0}", i + 1);
-            result[i] = int.Parse(Console.ReadLine());
-        }
-        int temp;
-
-        
-        for(int i = 0; i < result.Length; i++)
-        {
-            for(int j = 0; j < result.Length; j++)
-            {
-                if (result[i] < result[j])
-                {
-                    temp = result[i];
-                    result[i] = result[j];
-                    result[j] = temp;
-                }
-            }
-        }
-        foreach(var res in result)
-        {
-            Console.WriteLine(res);
-        }
-        return result;
-
-        
-
+        Console.WriteLine("Введите имя");
+        name = Console.ReadLine();
     }
+
+    static void BigDataOperation(in int[] arr)
+    {
+        arr[0] = 4;
+    } 
 
 }
