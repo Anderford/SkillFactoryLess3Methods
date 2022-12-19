@@ -3,7 +3,7 @@ using System.Reflection.Metadata.Ecma335;
 
 class MainClass
 {
-
+   
     static string? ShowColor(string UserName, int UserAge)
     {
 
@@ -15,10 +15,10 @@ class MainClass
         switch (color)
         {
             case "red":
-                
+
                 Console.BackgroundColor = ConsoleColor.Red;
                 Console.ForegroundColor = ConsoleColor.Black;
-                 break;
+                break;
 
             case "green":
                 Console.BackgroundColor = ConsoleColor.Green;
@@ -45,24 +45,28 @@ class MainClass
     public static void Main(string[] args)
     {
 
-        
+        Recursion();
+
+
+
         var array = GetArrayFromConsole();
 
-        SortArray(array, out int[] sortedasc, out int[] sorteddesc);
+         SortArray(array, out int[] sortedasc, out int[] sorteddesc);
 
-        var SomeName = "Ilia";
-        Console.WriteLine(SomeName);
+         var SomeName = "Ilia";
+         Console.WriteLine(SomeName);
 
-        GetName(ref SomeName);
+         GetName(ref SomeName);
 
-        Console.WriteLine(SomeName);
+         Console.WriteLine(SomeName);
 
-        var arr = new int[] { 1, 2, 3 };
-        BigDataOperation(arr);
+         var arr = new int[] { 1, 2, 3 };
+         BigDataOperation(arr);
 
-        Console.WriteLine(arr[0]);
+         Console.WriteLine(arr[0]);
 
     }
+
     static int[] GetArrayFromConsole()
     {
         var result = new int[5];
@@ -140,6 +144,42 @@ class MainClass
     static void BigDataOperation(in int[] arr)
     {
         arr[0] = 4;
-    } 
+    }
+
+
+
+    static void Recursion()
+    {
+        Console.WriteLine("Write something");
+        var str = Console.ReadLine();
+        Console.WriteLine("Echo deep");
+        var EchoDeep = Convert.ToInt32(Console.ReadLine());
+
+        Echo(str, EchoDeep);
+
+    }
+
+
+    static void Echo(string Phaze, int EchoDeep)
+    {
+
+        var modif = Phaze;
+
+        if (modif.Length > 2)
+        {
+            modif = modif.Remove(0, 2);
+          
+        }
+        Console.WriteLine("..." + modif);
+        Console.BackgroundColor = (ConsoleColor)EchoDeep;
+        if (EchoDeep > 1)
+        {
+            Echo(modif, EchoDeep - 1);
+        }
+    }
+   
 
 }
+
+
+
