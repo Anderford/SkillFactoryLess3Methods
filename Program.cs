@@ -7,11 +7,8 @@ class MainClass
     static string? ShowColor(string UserName, int UserAge)
     {
 
-        (string UserName, int age) anketa;
-
         Console.WriteLine($"Привет {UserName} напишите свой любимый цвет на английском с маленькой буквы");
         var color = Console.ReadLine();
-        //return color;
         switch (color)
         {
             case "red":
@@ -136,7 +133,7 @@ class MainClass
 
     }
 
-    static void GetName(ref string name)
+    static void GetName(ref string? name)
     {
         Console.WriteLine("Введите имя");
         name = Console.ReadLine();
