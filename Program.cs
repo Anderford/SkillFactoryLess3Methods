@@ -51,20 +51,21 @@ class MainClass
 
         var array = GetArrayFromConsole();
 
-         SortArray(array, out int[] sortedasc, out int[] sorteddesc);
+        SortArray(array, out int[] sortedasc, out int[] sorteddesc);
 
-         var SomeName = "Ilia";
-         Console.WriteLine(SomeName);
+        var SomeName = "Ilia";
+        Console.WriteLine(SomeName);
 
-         GetName(ref SomeName);
+        GetName(ref SomeName);
 
-         Console.WriteLine(SomeName);
+        Console.WriteLine(SomeName);
 
-         var arr = new int[] { 1, 2, 3 };
-         BigDataOperation(arr);
+        var arr = new int[] { 1, 2, 3 };
+        BigDataOperation(arr);
 
-         Console.WriteLine(arr[0]);
-
+        Console.WriteLine(arr[0]);
+        Console.WriteLine(Factorial(20));
+        Console.WriteLine(PowerUp(2,10)); 
     }
 
     static int[] GetArrayFromConsole()
@@ -149,36 +150,68 @@ class MainClass
 
 
     static void Recursion()
+     {
+         Console.WriteLine("Write something");
+         var str = Console.ReadLine();
+         Console.WriteLine("Echo deep");
+         var EchoDeep = Convert.ToInt32(Console.ReadLine());
+
+         Echo(str, EchoDeep);
+
+     }
+
+
+     static void Echo(string Phaze, int EchoDeep)
+     {
+
+         var modif = Phaze;
+
+         if (modif.Length > 2)
+         {
+             modif = modif.Remove(0, 2);
+
+         }
+         Console.WriteLine("..." + modif);
+         Console.BackgroundColor = (ConsoleColor)EchoDeep;
+         if (EchoDeep > 1)
+         {
+             Echo(modif, EchoDeep - 1);
+         }
+     }
+
+    static decimal Factorial(int x)
     {
-        Console.WriteLine("Write something");
-        var str = Console.ReadLine();
-        Console.WriteLine("Echo deep");
-        var EchoDeep = Convert.ToInt32(Console.ReadLine());
-
-        Echo(str, EchoDeep);
-
+        if (x == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return x * Factorial(x - 1);
+        }
     }
 
-
-    static void Echo(string Phaze, int EchoDeep)
+   private static int PowerUp(int N, byte pow)
     {
-
-        var modif = Phaze;
-
-        if (modif.Length > 2)
+        if (pow == 0)
         {
-            modif = modif.Remove(0, 2);
-          
+            return 0;
         }
-        Console.WriteLine("..." + modif);
-        Console.BackgroundColor = (ConsoleColor)EchoDeep;
-        if (EchoDeep > 1)
+        else
         {
-            Echo(modif, EchoDeep - 1);
+
+            if (pow == 1)
+            {
+                return N;
+
+            }
+            else
+            {
+                return N * PowerUp(N, --pow);
+
+            }
         }
     }
-   
-
 }
 
 
